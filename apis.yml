@@ -1,0 +1,32 @@
+aid: useagentbank
+name: AgentBank
+description: 'AgentBank is a company surfaced via the API Evangelist harvest backlog (source: new-submission)
+  and added to the network as a stub for full-pipeline profiling.'
+url: https://raw.githubusercontent.com/api-evangelist/useagentbank/refs/heads/main/apis.yml
+x-type: company
+x-source: harvest:new-submission
+x-tier: stub
+x-tier-reason: harvest
+specificationVersion: '0.20'
+created: '2026-10-20'
+modified: '2026-10-20'
+tags:
+- Company
+apis: []
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+common:
+- type: Website
+  url: https://useagentbank.com
+- type: Documentation
+  url: https://docs.useagentbank.com
+x-submission-notes: 'api-search/inbox#48. Crypto banking/payouts for AI agents. OpenAPI 3.1 (public x402
+  payout API) https://protocol.useagentbank.com/openapi.json; llms.txt (site + docs, llms-full); remote
+  MCP https://mcp.useagentbank.com (OAuth 2.1 PKCE, DCR; RFC 9728 metadata); MCP Registry com.useagentbank/agentbank;
+  MIT client github.com/theagentbank/agent-bank-mcp (npm agent-bank-mcp). Kin approved 2026-10-19 (case-by-case:
+  crypto rails).'
+x-submission-probe: artifacts listed in issue
+x-submitted-by: github:trunghuynh-humanfx (github api-search/inbox#48, 2026-10-19)
