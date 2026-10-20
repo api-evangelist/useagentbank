@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/useagentbank/main/json-schema/useagentbank-public-x402-funding-submitted-schema.json",
+  "title": "PublicX402FundingSubmitted",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/useagentbank-openapi.json#/components/schemas/PublicX402FundingSubmitted",
+  "type": "object",
+  "required": [
+    "flow_id",
+    "payment_id",
+    "state",
+    "terminal"
+  ],
+  "properties": {
+    "flow_id": {
+      "type": "string"
+    },
+    "payment_id": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "const": "funding_submitted"
+    },
+    "terminal": {
+      "type": "boolean",
+      "const": false
+    }
+  }
+}

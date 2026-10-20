@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "@vocab": "https://useagentbank.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "useagentbank": "https://useagentbank.com/schema#",
+    "PublicX402ExactSourceStart": "useagentbank:PublicX402ExactSourceStart",
+    "action": {
+      "@id": "useagentbank:action",
+      "@type": "xsd:string"
+    },
+    "flow_id": {
+      "@id": "useagentbank:flow_id",
+      "@type": "xsd:string"
+    },
+    "amount_mode": {
+      "@id": "useagentbank:amount_mode",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "useagentbank:source"
+    },
+    "destination": {
+      "@id": "useagentbank:destination"
+    },
+    "PublicX402ExactDestinationStart": "useagentbank:PublicX402ExactDestinationStart",
+    "PublicX402Source": "useagentbank:PublicX402Source",
+    "asset": {
+      "@id": "useagentbank:asset"
+    },
+    "amount": {
+      "@id": "useagentbank:amount",
+      "@type": "xsd:string"
+    },
+    "PublicX402PaymentRequired": "useagentbank:PublicX402PaymentRequired",
+    "payment_id": {
+      "@id": "useagentbank:payment_id",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "useagentbank:state",
+      "@type": "xsd:string"
+    },
+    "payment_instruction": {
+      "@id": "useagentbank:payment_instruction"
+    },
+    "PublicX402BazaarDiscovery": "useagentbank:PublicX402BazaarDiscovery",
+    "discovery": {
+      "@id": "useagentbank:discovery",
+      "@type": "xsd:boolean"
+    },
+    "message": {
+      "@id": "useagentbank:message",
+      "@type": "xsd:string"
+    },
+    "PublicX402FundingSubmitted": "useagentbank:PublicX402FundingSubmitted",
+    "terminal": {
+      "@id": "useagentbank:terminal",
+      "@type": "xsd:boolean"
+    },
+    "PublicX402Destination": "useagentbank:PublicX402Destination",
+    "country": {
+      "@id": "useagentbank:country",
+      "@type": "xsd:string"
+    },
+    "recipient": {
+      "@id": "useagentbank:recipient"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "AgentBank API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects AgentBank's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/useagentbank-openapi.json.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/useagentbank-openapi.json"
+  ]
+}

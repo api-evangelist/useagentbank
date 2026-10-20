@@ -1,0 +1,24 @@
+{
+  "provider": "useagentbank",
+  "sources": [
+    "useagentbank-openapi.json"
+  ],
+  "outputs": [
+    "useagentbank-payouts-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/useagentbank-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "useagentbank-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "useagentbank-openapi.json: declared missing tag: Cross-border",
+    "useagentbank-openapi.json: declared missing tag: Crypto",
+    "useagentbank-openapi.json: declared missing tag: Payouts",
+    "useagentbank-openapi.json: declared missing tag: Tracking",
+    "useagentbank-openapi.json: multi-axis tagging (4 tags, 1 first tags, 2.33x duplication over 3 operations) \u2014 split on first tag, 3 operations narrowed",
+    "apis.yml register: written (+1 apis, 1 total)"
+  ],
+  "skipped": []
+}

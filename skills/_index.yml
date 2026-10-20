@@ -1,0 +1,12 @@
+generated: '2026-10-20'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/useagentbank-openapi.json
+skills:
+- file: skills/useagentbank-payout-flow.md
+  name: useagentbank-payout-flow
+  api: openapi/useagentbank-openapi.json
+  operations:
+  - createPublicX402Payout
+  - listPublicX402Payouts
+  - getPublicX402Payout

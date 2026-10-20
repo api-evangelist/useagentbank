@@ -1,32 +1,124 @@
 aid: useagentbank
 name: AgentBank
-description: 'AgentBank is a company surfaced via the API Evangelist harvest backlog (source: new-submission)
-  and added to the network as a stub for full-pipeline profiling.'
+image: https://useagentbank.com/opengraph-image.jpg?opengraph-image.38-a9x557i8hq.jpg
+description: AgentBank provides crypto‑backed banking services tailored for AI agents, enabling them to collect, hold, convert, and move money
+  across the real‑world financial system. Through its Model Context Protocol (MCP) API, agents can initiate payments to bank accounts, QR codes,
+  and crypto wallets, with human owners approving transactions and enforcing spending limits. The platform supports cross‑border stablecoin payments,
+  compliance with financial regulations, and offers developer tools for seamless integration.
 url: https://raw.githubusercontent.com/api-evangelist/useagentbank/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:new-submission
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-20 (modular-v1; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-20'
 modified: '2026-10-20'
 tags:
 - Company
-apis: []
+- Finance
+- AI
+- Banking
+- Crypto
+- Payments
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/useagentbank-agentic-access.yml
+- type: Spectral
+  url: rules/useagentbank-rules.yml
+- type: JSONLD
+  url: json-ld/useagentbank-context.jsonld
+- type: Vocabulary
+  url: vocabulary/useagentbank-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/useagentbank-webhooks.yml
+- type: DataModel
+  url: data-model/useagentbank-data-model.yml
+- type: ChangeLog
+  url: changelog/useagentbank-changelog.yml
+- type: Idempotency
+  url: conventions/useagentbank-conventions.yml
+- type: Conventions
+  url: conventions/useagentbank-conventions.yml
+- type: Authentication
+  url: authentication/useagentbank-authentication.yml
+- type: ErrorCatalog
+  url: errors/useagentbank-problem-types.yml
+- type: Conformance
+  url: conformance/useagentbank-conformance.yml
+- type: LLMsTxt
+  url: llms/useagentbank-llms.txt
+- type: AgentCard
+  url: a2a/useagentbank-a2a.yml
+- type: WellKnown
+  url: well-known/useagentbank-well-known.yml
+- type: Hosts
+  url: hosts/useagentbank-hosts.yml
+- type: Vendors
+  url: vendors/useagentbank-vendors.yml
+- type: SDKs
+  url: packages/useagentbank-packages.yml
+- type: Packages
+  url: packages/useagentbank-packages.yml
+- type: Security
+  url: https://useagentbank.com/security
+- type: ChangeLog
+  url: https://docs.useagentbank.com/changelog
+- type: APIReference
+  url: https://docs.useagentbank.com/reference/mcp-overview
+- type: DomainSecurity
+  url: security/useagentbank-domain-security.yml
 - type: Website
   url: https://useagentbank.com
 - type: Documentation
   url: https://docs.useagentbank.com
-x-submission-notes: 'api-search/inbox#48. Crypto banking/payouts for AI agents. OpenAPI 3.1 (public x402
-  payout API) https://protocol.useagentbank.com/openapi.json; llms.txt (site + docs, llms-full); remote
-  MCP https://mcp.useagentbank.com (OAuth 2.1 PKCE, DCR; RFC 9728 metadata); MCP Registry com.useagentbank/agentbank;
-  MIT client github.com/theagentbank/agent-bank-mcp (npm agent-bank-mcp). Kin approved 2026-10-19 (case-by-case:
-  crypto rails).'
+- type: PrivacyPolicy
+  url: https://useagentbank.com/privacy
+- type: TermsOfService
+  url: https://useagentbank.com/terms
+- type: GettingStarted
+  url: https://docs.useagentbank.com/getting-started/quickstart.md
+apis:
+- aid: useagentbank:useagentbank-payouts-api
+  name: AgentBank Payouts API
+  description: The Payouts API from AgentBank — 3 operation(s) for payouts.
+  humanURL: https://protocol.useagentbank.com/openapi.json
+  baseURL: https://protocol.useagentbank.com
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/useagentbank-payouts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/useagentbank-public-x402-exact-source-start-schema.json
+  - type: JSONSchema
+    url: json-schema/useagentbank-public-x402-funding-submitted-schema.json
+x-submission-notes: 'api-search/inbox#48. Crypto banking/payouts for AI agents. OpenAPI 3.1 (public x402 payout API) https://protocol.useagentbank.com/openapi.json;
+  llms.txt (site + docs, llms-full); remote MCP https://mcp.useagentbank.com (OAuth 2.1 PKCE, DCR; RFC 9728 metadata); MCP Registry com.useagentbank/agentbank;
+  MIT client github.com/theagentbank/agent-bank-mcp (npm agent-bank-mcp). Kin approved 2026-10-19 (case-by-case: crypto rails).'
 x-submission-probe: artifacts listed in issue
 x-submitted-by: github:trunghuynh-humanfx (github api-search/inbox#48, 2026-10-19)
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  method: derived
+  generated: '2026-10-20'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: the company publishes developer documentation but serves no machine-readable contract from it
+  evidence:
+  - url: https://docs.useagentbank.com/mcp
+    status: null
+  - url: https://useagentbank.com
+    status: 200
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 33
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

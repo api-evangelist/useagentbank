@@ -1,0 +1,20 @@
+generated: '2026-10-20'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.useagentbank.com/changelog.md
+sources:
+- https://docs.useagentbank.com/changelog.md
+entries:
+- breaking: false
+  highlights:
+  - Added a dedicated Partner API section with onboarding, authentication, KYC, payment workflows, webhook guidance, and endpoint reference pages.
+  version: '2026-09-02'
+  date: '2026-09-02'
+- breaking: false
+  highlights:
+  - Init first version of AgentBank document.
+  version: '2026-07-29'
+  date: '2026-07-29'
+current_version: '2026-09-02'
+note: Versioning scheme uses date strings (YYYY-MM-DD) for each release.
+docs: https://docs.useagentbank.com/changelog.md

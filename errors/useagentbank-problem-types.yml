@@ -1,0 +1,38 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/useagentbank-openapi.json
+format: custom
+envelope:
+  media_type: application/json
+  schema: null
+coverage:
+  operations: 3
+  statuses_declared: 4
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid payout request
+  operations: 1
+  media_types: []
+  schema: null
+- status: 402
+  title: Payment Required
+  description: SIGN-IN-WITH-X proof is required or invalid. PAYMENT-REQUIRED carries a fresh SIWX challenge.
+  operations: 3
+  media_types:
+  - application/json
+  schema: null
+- status: 404
+  title: Not Found
+  description: Flow does not exist or is not owned by this payer
+  operations: 1
+  media_types: []
+  schema: null
+- status: 409
+  title: Conflict
+  description: Idempotency-Key conflicts with a different payout
+  operations: 1
+  media_types: []
+  schema: null

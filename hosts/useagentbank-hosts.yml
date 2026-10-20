@@ -1,0 +1,107 @@
+generated: '2026-10-20'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 7
+  own: 6
+  other_domain: 1
+  platform: 0
+  roles:
+  - api
+  - docs
+  - other
+  - website
+hosts:
+- host: api.useagentbank.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: useagentbank.com
+  role: api
+  relation: own
+- host: app.useagentbank.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: useagentbank.com
+  role: other
+  relation: own
+- host: docs.useagentbank.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - ChangeLog
+  - APIReference
+  - Documentation
+  - GettingStarted
+  serves:
+  - docs
+  - documentation
+  - hosting
+  vendor: mintlify
+  registrable_domain: useagentbank.com
+  role: docs
+  relation: own
+- host: mcp.useagentbank.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: useagentbank.com
+  role: other
+  relation: own
+- host: mintlify.com
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: mintlify.com
+  role: other
+  relation: other-domain
+- host: protocol.useagentbank.com
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves:
+  - api
+  - docs
+  registrable_domain: useagentbank.com
+  role: other
+  relation: own
+- host: useagentbank.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Security
+  - Website
+  - PrivacyPolicy
+  - TermsOfService
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: useagentbank.com
+  role: website
+  relation: own

@@ -1,0 +1,7 @@
+generated: '2026-10-20'
+method: derived
+source: https://mcp.useagentbank.com
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived

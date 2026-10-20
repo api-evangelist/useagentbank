@@ -1,0 +1,153 @@
+# AgentBank
+
+> Use AgentBank through its hosted agent, MCP integration, or Partner API for fiat and crypto payment routes.
+
+- [AgentBank](https://docs.useagentbank.com/index.md)
+- [Quickstart](https://docs.useagentbank.com/getting-started/quickstart.md): Choose how you want to use AgentBank, connect your account, and make your first request.
+- [Connect your agent](https://docs.useagentbank.com/getting-started/connect-your-agent.md): Configure AgentBank MCP for Codex, Claude Code, Claude Desktop, OpenClaw, or Hermes.
+- [Install skill](https://docs.useagentbank.com/getting-started/install-the-skill.md): Give your agent the instructions for setting up and using AgentBank.
+- [Your first payment](https://docs.useagentbank.com/getting-started/first-payment.md): Ask for a payment, review the quote, approve it, and track the result.
+- [Environment](https://docs.useagentbank.com/getting-started/environment.md): Try AgentBank with mock tokens in staging or use real funds in production.
+- [Example prompts](https://docs.useagentbank.com/ai-guides/conversation-patterns.md): Tell your assistant what you want to do in everyday language.
+- [Remote MCP](https://docs.useagentbank.com/getting-started/hosted-oauth.md): Connect AgentBank to ChatGPT or Claude with browser sign-in and interactive payment cards.
+- [Connect ChatGPT](https://docs.useagentbank.com/remote-mcp/chatgpt.md): Add AgentBank to ChatGPT and sign in to your account.
+- [Connect Claude](https://docs.useagentbank.com/remote-mcp/claude.md): Add AgentBank as a Claude remote connector and sign in to your account.
+- [Overview](https://docs.useagentbank.com/money-in/overview.md): Choose how to receive crypto in your AgentBank wallet.
+- [Add money to your wallet](https://docs.useagentbank.com/money-in/add-money.md): Pay in a supported local currency and receive crypto in your AgentBank wallet.
+- [Collect from another payer](https://docs.useagentbank.com/money-in/collect-from-a-payer.md): Create and track a one-time collection that someone else can pay.
+- [Overview](https://docs.useagentbank.com/money-out/overview.md): Pay a bank recipient using supported crypto.
+- [Send money to a bank account](https://docs.useagentbank.com/money-out/bank-payout.md): Use supported crypto to pay a bank recipient in local currency.
+- [Manage recipients](https://docs.useagentbank.com/money-out/manage-recipients.md): Choose a saved recipient or safely add new bank, QR, or wallet details.
+- [Overview](https://docs.useagentbank.com/exchange/overview.md): Compare costs or convert between supported currencies and crypto assets.
+- [Quotes and rates](https://docs.useagentbank.com/exchange/quotes-and-rates.md): Understand what you will pay and receive before deciding to proceed.
+- [Swap crypto](https://docs.useagentbank.com/exchange/same-chain-swaps.md): Exchange supported crypto assets on the same network.
+- [Send between currencies](https://docs.useagentbank.com/exchange/fiat-to-fiat.md): Pay in one local currency and deliver another to a supported recipient.
+- [Overview](https://docs.useagentbank.com/payments/overview.md): Track a payment, manage several together, or get help when something goes wrong.
+- [Payment cards in chat](https://docs.useagentbank.com/payments/hosted-payment-cards.md): Review, approve, fund, and track payments in ChatGPT or Claude.
+- [Payment plans](https://docs.useagentbank.com/payments/payment-plans.md): Review several payments together, then fund and track each separately.
+- [Payment status and tracking](https://docs.useagentbank.com/payments/track-payments.md): Understand your payment's progress, what needs action, and when it is complete.
+- [Cancel or correct a payment](https://docs.useagentbank.com/payments/cancel-or-correct.md): Ask to stop an unfunded payment or fix recipient details when allowed.
+- [Recover a payment](https://docs.useagentbank.com/payments/recover-failures.md): Find the next safe step for an interrupted, expired, or failed payment.
+- [Overview](https://docs.useagentbank.com/autonomy/overview.md): Understand what your agent can do and when AgentBank asks you to act.
+- [Set your approval threshold](https://docs.useagentbank.com/autonomy/configure-thresholds.md): Choose when your connected agent should require additional World ID approval.
+- [Spending grants](https://docs.useagentbank.com/autonomy/spending-grants.md): Set limits for eligible crypto funding through a remote AgentBank connection.
+- [World ID approval](https://docs.useagentbank.com/autonomy/world-id-approval.md): Complete an additional human approval when AgentBank requests it for a payment.
+- [Identity verification](https://docs.useagentbank.com/autonomy/kyc.md): Complete identity checks when they are required for your payment route.
+- [Agent verification and gas](https://docs.useagentbank.com/autonomy/agentkit-and-gas.md): Verify your linked wallet and learn when transaction gas may be sponsored.
+- [Security and wallet control](https://docs.useagentbank.com/security/security-model.md): Understand wallet custody, agent permissions, and how to protect your account.
+- [Disconnect an agent](https://docs.useagentbank.com/security/account-revocation.md): Remove access for a lost, compromised, or no-longer-needed agent.
+- [Troubleshooting](https://docs.useagentbank.com/support/troubleshooting.md): Find the next step for connection, verification, and payment problems.
+- [FAQ](https://docs.useagentbank.com/support/faq.md): Quick answers about AgentBank wallets, approvals, collections, and payment status.
+- [Contact support](https://docs.useagentbank.com/support/contact.md): Contact AgentBank support and share only safe diagnostic information.
+- [Changelog](https://docs.useagentbank.com/changelog.md): Track public AgentBank documentation and MCP contract updates.
+- [MCP overview](https://docs.useagentbank.com/reference/mcp-overview.md): Find AgentBank tool contracts, connection boundaries, and agent integration guidance.
+- [Core concepts](https://docs.useagentbank.com/introduction/core-concepts.md): Learn AgentBank accounts, wallets, assets, routes, payments, identity, scopes, and idempotency.
+- [Architecture](https://docs.useagentbank.com/introduction/architecture.md): Understand the responsibility boundaries between the user, agent, MCP, Core, wallet, and payment rails.
+- [MCP configuration](https://docs.useagentbank.com/reference/configuration.md): Configure AgentBank endpoints, transport, credentials, and local profiles.
+- [Local authorization flow](https://docs.useagentbank.com/getting-started/authentication.md): Connect a local MCP installation to your AgentBank account and bound Privy wallet.
+- [MCP resources and prompt](https://docs.useagentbank.com/reference/resources.md): Read AgentBank runtime routing and journey instructions through standard MCP discovery.
+- [Scopes](https://docs.useagentbank.com/reference/scopes.md): Understand the normal permissions requested by an AgentBank connected agent.
+- [Local approval policy](https://docs.useagentbank.com/reference/approval-policy.md): Read and update a local agent's World ID approval threshold.
+- [Tool overview](https://docs.useagentbank.com/reference/tools/overview.md): Understand AgentBank MCP capabilities and the tools available on local and hosted connections.
+- [begin_agent_onboarding](https://docs.useagentbank.com/reference/tools/begin-agent-onboarding.md): Start or resume browser authorization for a local AgentBank connected agent.
+- [wait_for_agent_onboarding](https://docs.useagentbank.com/reference/tools/wait-for-agent-onboarding.md): Poll browser authorization and finalize the connected agent and wallet binding.
+- [get_installation_status](https://docs.useagentbank.com/reference/tools/get-installation-status.md): Read safe enrollment and scope metadata for a known installation.
+- [relogin](https://docs.useagentbank.com/reference/tools/relogin.md): Refresh an expired session for the active local AgentBank installation.
+- [revoke_agent](https://docs.useagentbank.com/reference/tools/revoke-agent.md): Revoke the current connected agent and clear its local credentials.
+- [whoami](https://docs.useagentbank.com/reference/tools/whoami.md): Identify the current connected agent, account owner, scopes, mode, and owner badges.
+- [check_verification_status](https://docs.useagentbank.com/reference/tools/check-verification-status.md): Read the account owner's KYC state, badges, and fiat-market readiness.
+- [do_kyc](https://docs.useagentbank.com/reference/tools/do-kyc.md): Start hosted KYC when the account owner is not already verified.
+- [get_verification_guidance](https://docs.useagentbank.com/reference/tools/get-verification-guidance.md): Get first-party guidance for KYC and World ID requirements.
+- [check_my_scopes](https://docs.useagentbank.com/reference/tools/check-my-scopes.md): Compare granted scopes with the MCP server's configured tool-scope map.
+- [list_currencies](https://docs.useagentbank.com/reference/tools/list-currencies.md): List active fiat and crypto metadata used by AgentBank routes.
+- [get_supported_payment_capabilities](https://docs.useagentbank.com/reference/tools/get-supported-payment-capabilities.md): Read a general product-capability summary without checking live route readiness.
+- [list_quote_book_pairs](https://docs.useagentbank.com/reference/tools/list-quote-book-pairs.md): List live direct on-ramp and off-ramp currency pairs without creating an intent.
+- [browse_quote_book](https://docs.useagentbank.com/reference/tools/browse-quote-book.md): Browse anonymous quote groups and amount bands without creating an intent.
+- [get_instructions](https://docs.useagentbank.com/reference/tools/get-instructions.md): Read current server guidance for an AgentBank journey.
+- [get_account_status](https://docs.useagentbank.com/reference/tools/get-account-status.md): Read combined installation, scope, verification, wallet, blocker, and next-action readiness.
+- [estimate_payment](https://docs.useagentbank.com/reference/tools/estimate-payment.md): Preview a complete direct, swap, or explicit two-step payment route.
+- [create_payment](https://docs.useagentbank.com/reference/tools/create-payment.md): Persist a payment, independently validate its route, and create its authorization state.
+- [continue_payment](https://docs.useagentbank.com/reference/tools/continue-payment.md): Open approved settlement steps and return the payment's current instruction.
+- [get_payment](https://docs.useagentbank.com/reference/tools/get-payment.md): Read the authoritative durable aggregate for one payment.
+- [list_payments](https://docs.useagentbank.com/reference/tools/list-payments.md): List durable payments scoped to the current local installation or hosted OAuth connection.
+- [cancel_payment](https://docs.useagentbank.com/reference/tools/cancel-payment.md): Cancel a durable payment while cancellation remains valid.
+- [correct_payment_recipient](https://docs.useagentbank.com/reference/tools/correct-payment-recipient.md): Correct recipient fields for a payment paused on an invalid recipient.
+- [create_payment_plan](https://docs.useagentbank.com/reference/tools/create-payment-plan.md): Create a draft that will contain several independently settled payments.
+- [review_payment_plan](https://docs.useagentbank.com/reference/tools/review-payment-plan.md): Review the authoritative ordered contents and totals of a draft payment plan.
+- [list_payment_plans](https://docs.useagentbank.com/reference/tools/list-payment-plans.md): List payment plans visible to the current connection.
+- [submit_payment_plan](https://docs.useagentbank.com/reference/tools/submit-payment-plan.md): Seal a reviewed plan and create its single World ID approval.
+- [cancel_payment_plan](https://docs.useagentbank.com/reference/tools/cancel-payment-plan.md): Cancel a plan before any child payment has moved funds.
+- [estimate_x402_outbound_payment](https://docs.useagentbank.com/reference/tools/estimate-x402-outbound-payment.md): Validate an external x402 challenge and create a durable outbound intent.
+- [confirm_x402_outbound_payment](https://docs.useagentbank.com/reference/tools/confirm-x402-outbound-payment.md): Confirm a reviewed x402 intent and open its exact fiat funding route.
+- [get_x402_outbound_payment](https://docs.useagentbank.com/reference/tools/get-x402-outbound-payment.md): Read the authoritative state of one outbound x402 intent.
+- [list_x402_outbound_payments](https://docs.useagentbank.com/reference/tools/list-x402-outbound-payments.md): Find earlier outbound x402 intents for recovery and tracking.
+- [show_payment_approval](https://docs.useagentbank.com/reference/tools/show-payment-approval.md): Display the hosted World ID approval card for a payment that requires approval.
+- [get_payment_instruction](https://docs.useagentbank.com/reference/tools/get-payment-instruction.md): Reopen a hosted funding card when the current instruction was missed.
+- [show_payment_progress](https://docs.useagentbank.com/reference/tools/show-payment-progress.md): Display the hosted lifecycle card after payment funds have moved.
+- [list_spending_grants](https://docs.useagentbank.com/reference/tools/list-spending-grants.md): List spending grants owned by the current hosted OAuth connection.
+- [get_spending_grant](https://docs.useagentbank.com/reference/tools/get-spending-grant.md): Inspect one selected hosted spending grant without displaying its card.
+- [show_spending_grant](https://docs.useagentbank.com/reference/tools/show-spending-grant.md): Display the activation or status card for one selected spending grant.
+- [request_spending_grant](https://docs.useagentbank.com/reference/tools/request-spending-grant.md): Create a pending, bounded Privy spending grant for a hosted wallet.
+- [fund_payment_with_grant](https://docs.useagentbank.com/reference/tools/fund-payment-with-grant.md): Fund the current hosted crypto-deposit instruction with an active compatible grant.
+- [get_supported_bank_names](https://docs.useagentbank.com/reference/tools/get-supported-bank-names.md): Read canonical bank names for a hosted fiat rail when the directory is available.
+- [list_recipients](https://docs.useagentbank.com/reference/tools/list-recipients.md): List active saved payout destinations for the current account.
+- [get_recipient](https://docs.useagentbank.com/reference/tools/get-recipient.md): Read one saved recipient by ID.
+- [create_recipient](https://docs.useagentbank.com/reference/tools/create-recipient.md): Parse, validate, and register a fiat or crypto recipient from supported input forms.
+- [update_recipient](https://docs.useagentbank.com/reference/tools/update-recipient.md): Register a confirmed replacement for an existing recipient.
+- [list_wallets](https://docs.useagentbank.com/reference/tools/list-wallets.md): List the public AgentBank wallet bound to the current connection.
+- [verify_agent_kit](https://docs.useagentbank.com/reference/tools/verify-agent-kit.md): Start or refresh AgentKit verification for the single bound AgentBank wallet.
+- [get_wallet_balances](https://docs.useagentbank.com/reference/tools/get-wallet-balances.md): Read native and ERC-20 balances for the bound AgentBank wallet.
+- [get_token_allowance](https://docs.useagentbank.com/reference/tools/get-token-allowance.md): Read an ERC-20 allowance for the bound wallet, token, and spender.
+- [approve_token](https://docs.useagentbank.com/reference/tools/approve-token.md): Submit an exact ERC-20 approval only when the requested allowance is insufficient.
+- [execute_payment_instruction](https://docs.useagentbank.com/reference/tools/execute-payment-instruction.md): Execute only the current Core-owned payment instruction through the pinned wallet.
+- [get_transaction_receipt](https://docs.useagentbank.com/reference/tools/get-transaction-receipt.md): Resolve a sponsored send or read the on-chain receipt for a wallet transaction.
+- [Instructions for your agent](https://docs.useagentbank.com/ai-guides/instructions-for-your-agent.md): A concise operating contract for agents using AgentBank MCP.
+- [Payment decision guide](https://docs.useagentbank.com/ai-guides/payment-decision-guide.md): Choose the correct AgentBank journey from the user's source, destination, and recipient.
+- [Confirmation and authorization rules](https://docs.useagentbank.com/ai-guides/confirmation-rules.md): Distinguish standing authorization, user confirmation, World ID, wallet execution, and fiat funding.
+- [Recipient rules](https://docs.useagentbank.com/ai-guides/recipient-rules.md): Prevent guessed, ambiguous, or unvalidated payment destinations.
+- [Routing strategy](https://docs.useagentbank.com/ai-guides/routing-strategy.md): Select direct or two-step routes using live pairs and complete executable outcomes.
+- [Safety and recovery](https://docs.useagentbank.com/ai-guides/safety-and-recovery.md): Apply the non-negotiable safeguards for AgentBank payment workflows.
+- [x402 outbound payments](https://docs.useagentbank.com/payments/x402-payments.md): Pay an external x402 resource through a supported live fiat on-ramp.
+- [Payment statuses](https://docs.useagentbank.com/reference/statuses.md): Interpret AgentBank durable payment states and choose the next safe action.
+- [Idempotency and request IDs](https://docs.useagentbank.com/reference/idempotency.md): Retry AgentBank mutations without creating duplicate logical actions.
+- [Limitations](https://docs.useagentbank.com/reference/limitations.md): Understand the explicit non-capabilities of the current AgentBank MCP surface.
+- [MCP troubleshooting](https://docs.useagentbank.com/reference/troubleshooting.md): Diagnose local enrollment, credential, and payment-execution failures.
+- [Errors and reason codes](https://docs.useagentbank.com/reference/errors.md): Recover safely from common AgentBank MCP errors without duplicate payments.
+- [AgentBank Partner API](https://docs.useagentbank.com/partner-api/index.md): Build regulated fiat and crypto payments for your own end users.
+- [Quickstart](https://docs.useagentbank.com/partner-api/quickstart.md): The end-to-end path from merchant provisioning to a completed payment.
+- [Environments](https://docs.useagentbank.com/partner-api/environments.md): Sandbox and Production API hosts, isolation, and promotion guidance.
+- [Onboarding](https://docs.useagentbank.com/partner-api/onboarding.md): Set up merchant credentials and prepare your backend for the Partner API.
+- [Authentication](https://docs.useagentbank.com/partner-api/authentication.md): Ed25519 request signing for the Partner API and JWT login for the portal API.
+- [End-user KYC](https://docs.useagentbank.com/partner-api/end-user-kyc.md): Create a Core-issued end user with full KYC, then submit versioned partial updates.
+- [Rail readiness](https://docs.useagentbank.com/partner-api/rail-readiness.md): Wait for provider KYC forwarding and confirm eligible fiat rails before payment creation.
+- [Payments](https://docs.useagentbank.com/partner-api/payments.md): Choose a payment shape, estimate at checkout, and create one merchant order.
+- [Funding and tracking](https://docs.useagentbank.com/partner-api/funding-and-tracking.md): Present funding instructions safely and follow a payment through terminal state.
+- [Portal and webhooks](https://docs.useagentbank.com/partner-api/portal-and-webhooks.md): Manage webhook endpoints with a portal JWT and verify durable HMAC deliveries.
+- [Errors and idempotency](https://docs.useagentbank.com/partner-api/errors-and-idempotency.md): Make safe retries, resolve conflicts, and avoid duplicate merchant payments.
+- [API reference](https://docs.useagentbank.com/partner-api/api-reference.md): Endpoint-by-endpoint reference for discovery, signed partner, and merchant portal APIs.
+- [List currencies](https://docs.useagentbank.com/partner-api/reference/discovery/currencies.md): Read the active crypto and fiat asset catalog.
+- [List fiat payment capabilities](https://docs.useagentbank.com/partner-api/reference/discovery/fiat-payment-capabilities.md): Discover live on-ramp and off-ramp routes, plus final fiat recipient instruments for off-ramps.
+- [Get payment instrument schemas](https://docs.useagentbank.com/partner-api/reference/discovery/payment-instrument-schemas.md): Read the uniform recipient form schema for QR, direct bank transfer, and mobile money.
+- [List supported bank names](https://docs.useagentbank.com/partner-api/reference/discovery/supported-bank-names.md): Read the Core-curated direct bank-transfer name directory for a fiat rail.
+- [Create end user](https://docs.useagentbank.com/partner-api/reference/partner/create-end-user.md): Create a merchant-scoped end user from a complete KYC record and inline artifacts.
+- [Get end user](https://docs.useagentbank.com/partner-api/reference/partner/get-end-user.md): Read redacted KYC state and current fiat-rail readiness for a merchant end user.
+- [Update end-user KYC](https://docs.useagentbank.com/partner-api/reference/partner/update-end-user-kyc.md): Apply a versioned partial KYC update to a merchant end user.
+- [Parse QR recipient](https://docs.useagentbank.com/partner-api/reference/partner/parse-qr-recipient.md): Detect a fiat QR's country and resolve its canonical recipient details without storing it.
+- [Verify bank recipient](https://docs.useagentbank.com/partner-api/reference/partner/verify-bank-recipient.md): Validate and resolve a final direct bank-transfer recipient without storing it.
+- [Estimate payment](https://docs.useagentbank.com/partner-api/reference/partner/estimate-payment.md): Get a non-binding, end-user-readiness-filtered quote for one payment direction.
+- [Create payment](https://docs.useagentbank.com/partner-api/reference/partner/create-payment.md): Create one semantic on-ramp, off-ramp, or fiat-to-fiat payment.
+- [Get payment](https://docs.useagentbank.com/partner-api/reference/partner/get-payment.md): Read the current aggregate, instruction, hops, and observed timeline for one B2B payment.
+- [List payments](https://docs.useagentbank.com/partner-api/reference/partner/list-payments.md): List B2B payments owned by the signed merchant.
+- [Cancel payment](https://docs.useagentbank.com/partner-api/reference/partner/cancel-payment.md): Request cancellation of a merchant-owned payment before funding or where the current state permits it.
+- [Portal login](https://docs.useagentbank.com/partner-api/reference/portal/login.md): Exchange provisioned portal credentials for a merchant portal JWT.
+- [Get current portal user](https://docs.useagentbank.com/partner-api/reference/portal/get-current-user.md): Read the merchant identity associated with a portal JWT.
+- [Portal list payments](https://docs.useagentbank.com/partner-api/reference/portal/list-payments.md): List payment history owned by the merchant authenticated through the portal JWT.
+- [Portal get payment](https://docs.useagentbank.com/partner-api/reference/portal/get-payment.md): Read a merchant-owned payment aggregate and its observed timeline through the portal API.
+- [Create webhook](https://docs.useagentbank.com/partner-api/reference/portal/create-webhook.md): Register a merchant webhook endpoint and receive its one-time HMAC signing secret.
+- [List webhooks](https://docs.useagentbank.com/partner-api/reference/portal/list-webhooks.md): List active and disabled webhook endpoints for the portal merchant.
+- [Get webhook](https://docs.useagentbank.com/partner-api/reference/portal/get-webhook.md): Read metadata for one merchant-owned webhook endpoint.
+- [Update webhook](https://docs.useagentbank.com/partner-api/reference/portal/update-webhook.md): Replace the URL of one active merchant webhook endpoint.
+- [Delete webhook](https://docs.useagentbank.com/partner-api/reference/portal/delete-webhook.md): Soft-disable a merchant webhook endpoint.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

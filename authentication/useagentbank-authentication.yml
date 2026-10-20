@@ -1,0 +1,21 @@
+generated: '2026-10-20'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.useagentbank.com/getting-started/hosted-oauth.md
+sources:
+- https://docs.useagentbank.com/getting-started/hosted-oauth.md
+- https://docs.useagentbank.com/getting-started/authentication.md
+- https://docs.useagentbank.com/partner-api/authentication.md
+- https://docs.useagentbank.com/reference/tools/get-token-allowance.md
+description: Authentication methods for AgentBank APIs as documented.
+schemes:
+- type: other
+  name: Ed25519 request signing
+  evidence: Ed25519 request signing for the Partner API and JWT login for the portal API.
+  location: header
+  header: x-agentbank-signature
+  how_to_obtain: Obtain a merchant Ed25519 key pair during onboarding; the partner ID (`mp_...`) is returned during onboarding and the private
+    key is used to sign each request as described.
+note: No OAuth flow URLs or scopes are provided in the documentation pages. 1 extracted row(s) were dropped because their quote was not on the
+  page.
+docs: https://docs.useagentbank.com/getting-started/hosted-oauth.md

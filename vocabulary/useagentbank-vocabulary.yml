@@ -1,0 +1,65 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/useagentbank-openapi.json
+vocabulary:
+  name: AgentBank Domain Vocabulary
+  description: 'Terms declared by AgentBank''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-20'
+  terms:
+  - term: PublicX402ExactSourceStart
+    definition: 'Object declared by the contract with fields: action, flow_id, amount_mode, source, destination.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402ExactSourceStart
+  - term: PublicX402ExactDestinationStart
+    definition: 'Object declared by the contract with fields: action, flow_id, amount_mode, source, destination.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402ExactDestinationStart
+  - term: PublicX402Source
+    definition: 'Object declared by the contract with fields: asset, amount.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402Source
+  - term: PublicX402PaymentRequired
+    definition: 'Object declared by the contract with fields: flow_id, payment_id, state, payment_instruction.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402PaymentRequired
+  - term: PublicX402BazaarDiscovery
+    definition: 'Object declared by the contract with fields: state, discovery, message.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402BazaarDiscovery
+  - term: PublicX402FundingSubmitted
+    definition: 'Object declared by the contract with fields: flow_id, payment_id, state, terminal.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402FundingSubmitted
+  - term: PublicX402Destination
+    definition: 'Object declared by the contract with fields: asset, country, amount, recipient.'
+    tags:
+    - Object
+    source: openapi/useagentbank-openapi.json#/components/schemas/PublicX402Destination
+  - term: Payouts
+    definition: 'Resource group in the contract; its operation POST /api/public/x402/payout: Supports exact_source and exact_destination.'
+    tags:
+    - Resource Group
+    source: openapi/useagentbank-openapi.json
+  - term: Crypto
+    definition: 'Resource group in the contract; its operation POST /api/public/x402/payout: Supports exact_source and exact_destination.'
+    tags:
+    - Resource Group
+    source: openapi/useagentbank-openapi.json
+  - term: Cross-border
+    definition: 'Resource group in the contract; its operation POST /api/public/x402/payout: Supports exact_source and exact_destination.'
+    tags:
+    - Resource Group
+    source: openapi/useagentbank-openapi.json
+  - term: Tracking
+    definition: 'Resource group in the contract; its operation GET /api/public/x402/payments: Returns lightweight history for the payer wallet.'
+    tags:
+    - Resource Group
+    source: openapi/useagentbank-openapi.json

@@ -1,0 +1,29 @@
+generated: '2026-10-20'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.useagentbank.com/partner-api/portal-and-webhooks.md
+sources:
+- https://docs.useagentbank.com/partner-api/portal-and-webhooks.md
+- https://docs.useagentbank.com/partner-api/reference/portal/create-webhook.md
+- https://docs.useagentbank.com/partner-api/reference/portal/list-webhooks.md
+- https://docs.useagentbank.com/partner-api/reference/portal/get-webhook.md
+description: AgentBank publishes webhook events for merchant activities. Events are delivered as JSON payloads with HMAC‑SHA‑256 verification.
+events:
+- event: end_user.kyc.accepted
+- event: end_user.rail_readiness.updated
+- event: payment.created
+- event: payment.funding_required
+- event: payment.completed
+- event: payment.failed
+- event: payment.cancelled
+- event: payment.updated
+- event: payment.timeline_step.recorded
+delivery:
+  auth: 'Endpoint management uses a portal JWT (Authorization: Bearer <portal_jwt>). Delivery verification uses a one‑time HMAC signing secret
+    associated with the endpoint.'
+  signature: 'Headers include x-agentbank-signature-version (value: agentbank-webhook-hmac-sha256-v1) and x-agentbank-signature (value: v1=<lowercase
+    HMAC‑SHA‑256 hex>). The HMAC is computed over a canonical string containing the version, delivery ID, event ID, timestamp, and SHA‑256 of
+    the raw UTF‑8 body, using the endpoint''s signing_secret.'
+  retries: Delivery is at‑least‑once. Transient network failures, HTTP 429, and 5xx responses are retried with backoff. Use x-agentbank-delivery-id
+    to deduplicate.
+docs: https://docs.useagentbank.com/partner-api/portal-and-webhooks.md

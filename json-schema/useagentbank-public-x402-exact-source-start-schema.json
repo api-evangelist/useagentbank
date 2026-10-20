@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/useagentbank/main/json-schema/useagentbank-public-x402-exact-source-start-schema.json",
+  "title": "PublicX402ExactSourceStart",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/useagentbank-openapi.json#/components/schemas/PublicX402ExactSourceStart",
+  "type": "object",
+  "required": [
+    "action",
+    "amount_mode",
+    "source",
+    "destination"
+  ],
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "start",
+      "default": "start"
+    },
+    "flow_id": {
+      "type": "string",
+      "description": "Returned by the 402 and required on the signed retry."
+    },
+    "amount_mode": {
+      "type": "string",
+      "const": "exact_source",
+      "default": "exact_source"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "asset",
+        "amount"
+      ],
+      "default": {
+        "asset": {
+          "type": "crypto",
+          "ticker": "USDC",
+          "chain": "base"
+        },
+        "amount": "0.08"
+      },
+      "properties": {
+        "asset": {
+          "type": "object",
+          "required": [
+            "type",
+            "ticker",
+            "chain"
+          ],
+          "default": {
+            "type": "crypto",
+            "ticker": "USDC",
+            "chain": "base"
+          },
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "crypto",
+              "default": "crypto"
+            },
+            "ticker": {
+              "type": "string",
+              "const": "USDC",
+              "default": "USDC"
+            },
+            "chain": {
+              "type": "string",
+              "const": "base",
+              "default": "base"
+            }
+          }
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)?$",
+          "default": "0.08",
+          "description": "Required when amount_mode is exact_source."
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "required": [
+        "asset",
+        "country",
+        "recipient"
+      ],
+      "default": {
+        "asset": {
+          "type": "fiat",
+          "symbol": "IDR"
+        },
+        "country": "ID",
+        "recipient": {
+          "payment_instrument": "qr",
+          "qr_content": "00020101021126610014COM.GO-JEK.WWW01189360091435523135470210G5523135470303UMI51440014ID.CO.QRIS.WWW0215ID10243572625090303UMI5204794153033605802ID5925RONIN STRENGTH GYM, PGDAN6009TANGERANG61051533962070703A036304FB88",
+          "qr_dynamic": false
+        }
+      },
+      "properties": {
+        "asset": {
+          "type": "object",
+          "required": [
+            "type",
+            "symbol"
+          ],
+          "default": {
+            "type": "fiat",
+            "symbol": "IDR"
+          },
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "fiat",
+              "default": "fiat"
+            },
+            "symbol": {
+              "type": "string",
+              "const": "IDR",
+              "default": "IDR"
+            }
+          }
+        },
+        "country": {
+          "type": "string",
+          "const": "ID",
+          "default": "ID"
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)?$",
+          "description": "Required when amount_mode is exact_destination."
+        },
+        "recipient": {
+          "type": "object",
+          "required": [
+            "payment_instrument",
+            "qr_content"
+          ],
+          "default": {
+            "payment_instrument": "qr",
+            "qr_content": "00020101021126610014COM.GO-JEK.WWW01189360091435523135470210G5523135470303UMI51440014ID.CO.QRIS.WWW0215ID10243572625090303UMI5204794153033605802ID5925RONIN STRENGTH GYM, PGDAN6009TANGERANG61051533962070703A036304FB88",
+            "qr_dynamic": false
+          },
+          "properties": {
+            "payment_instrument": {
+              "type": "string",
+              "const": "qr",
+              "default": "qr"
+            },
+            "qr_content": {
+              "type": "string"
+            },
+            "qr_dynamic": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

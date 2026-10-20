@@ -1,0 +1,693 @@
+openapi: 3.2.0
+info:
+  title: AgentBank Public x402 Payout Payouts API
+  version: 1.0.0
+  description: 'Direct USDC-funded fiat payouts for x402-capable agents. Pricing is locked dynamically for each payout request. Supports exact_source and exact_destination. For exact_source, provide source.amount; for exact_destination, provide destination.amount. Live public destination fiats: ARS, BOB, BRL, COP, IDR, KES, KRW, MYR, PEN, PHP, TZS, USD. Each payer wallet may settle up to 500 USD cumulatively per UTC day.'
+  x-guidance: 'POST /api/public/x402/payout with a stable Idempotency-Key and the complete payout intent. The first response is HTTP 402 with PAYMENT-REQUIRED and flow_id. Retry the identical intent with flow_id and PAYMENT-SIGNATURE. An empty unsigned POST is a Bazaar discovery probe only: its 402 is not payable and creates no payout. Use the SIWX-protected public x402 payment endpoints to read a payer-owned payout after funding.'
+  x-agentbank-capabilities:
+    source_assets:
+    - ticker: USDC
+      chain: base
+      network: eip155:8453
+      asset: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+      decimals: 6
+    destination_fiats:
+    - fiat: ARS
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: AR
+        required_fields:
+        - country
+        - qr_content
+    - fiat: BOB
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: BO
+        required_fields:
+        - country
+        - qr_content
+    - fiat: BRL
+      payment_instruments:
+      - pix
+      - qr
+      recipient_requirements:
+      - payment_instrument: pix
+        country: BR
+        required_fields:
+        - country
+        - pix_key
+        - holder_name
+      - payment_instrument: qr
+        country: BR
+        required_fields:
+        - country
+        - qr_content
+    - fiat: COP
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: CO
+        required_fields:
+        - country
+        - qr_content
+    - fiat: IDR
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: ID
+        required_fields:
+        - country
+        - qr_content
+    - fiat: KES
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: KE
+        required_fields:
+        - country
+        - qr_content
+    - fiat: KRW
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: KR
+        required_fields:
+        - country
+        - qr_content
+    - fiat: MYR
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: MY
+        required_fields:
+        - country
+        - qr_content
+    - fiat: PEN
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: PE
+        required_fields:
+        - country
+        - qr_content
+    - fiat: PHP
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: PH
+        required_fields:
+        - country
+        - qr_content
+    - fiat: TZS
+      payment_instruments:
+      - qr
+      recipient_requirements:
+      - payment_instrument: qr
+        country: TZ
+        required_fields:
+        - country
+        - qr_content
+    - fiat: USD
+      payment_instruments:
+      - ach
+      - paypal
+      - venmo
+      recipient_requirements:
+      - payment_instrument: ach
+        country: US
+        required_fields:
+        - country
+        - bank_name
+        - bank_code
+        - account_number
+        - account_type
+        - holder_name
+        - street1
+        - city
+        - region
+        - postal_code
+      - payment_instrument: paypal
+        country: US
+        required_fields:
+        - country
+        - paypal_email
+        - holder_name
+      - payment_instrument: venmo
+        country: US
+        required_fields:
+        - country
+        - venmo_phone
+    amount_modes:
+      exact_source: source.amount is fixed; destination amount is quoted.
+      exact_destination: destination.amount is fixed; required source amount is quoted.
+    wallet_policy:
+      daily_limit:
+        currency: USD
+        amount: '500'
+        window: UTC day
+        scope: payer wallet
+        enforcement: cumulative settled x402 amount
+tags:
+- name: Payouts
+paths:
+  /api/public/x402/payout:
+    post:
+      operationId: createPublicX402Payout
+      summary: Pay for a fiat payout with x402
+      tags:
+      - Payouts
+      x-payment-info:
+        price:
+          mode: dynamic
+          currency: USD
+          min: '0.010000'
+          max: '500.000000'
+        protocols:
+        - x402: {}
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          example: x402-discovery-probe-001
+        description: Stable client-generated key. Reuse it for the paid retry of this payout.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicX402ExactSourceStart'
+            examples:
+              base_usdc_to_idr_qr:
+                summary: Exact-source Base USDC payout to an Indonesian QR
+                value:
+                  action: start
+                  amount_mode: exact_source
+                  source:
+                    asset:
+                      type: crypto
+                      ticker: USDC
+                      chain: base
+                    amount: '0.08'
+                  destination:
+                    asset:
+                      type: fiat
+                      symbol: IDR
+                    country: ID
+                    recipient:
+                      payment_instrument: qr
+                      qr_content: 00020101021126610014COM.GO-JEK.WWW01189360091435523135470210G5523135470303UMI51440014ID.CO.QRIS.WWW0215ID10243572625090303UMI5204794153033605802ID5925RONIN STRENGTH GYM, PGDAN6009TANGERANG61051533962070703A036304FB88
+                      qr_dynamic: false
+      responses:
+        '202':
+          description: The signed transfer is durably submitted; poll through the authenticated read API.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicX402FundingSubmitted'
+        '400':
+          description: Invalid payout request
+        '402':
+          description: Payment Required. A complete payout request receives the exact locked USDC deposit instruction; an empty unsigned POST receives a non-payable Bazaar discovery challenge.
+          headers:
+            PAYMENT-REQUIRED:
+              required: true
+              schema:
+                type: string
+              description: Base64-encoded x402 v2 PaymentRequired payload.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/PublicX402PaymentRequired'
+                - $ref: '#/components/schemas/PublicX402BazaarDiscovery'
+        '409':
+          description: Idempotency-Key conflicts with a different payout
+      description: 'Supports exact_source and exact_destination. For exact_source, provide source.amount; for exact_destination, provide destination.amount. Live public destination fiats: ARS, BOB, BRL, COP, IDR, KES, KRW, MYR, PEN, PHP, TZS, USD. Each payer wallet may settle up to 500 USD cumulatively per UTC day.'
+      x-agentbank-capabilities:
+        source_assets:
+        - ticker: USDC
+          chain: base
+          network: eip155:8453
+          asset: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+          decimals: 6
+        destination_fiats:
+        - fiat: ARS
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: AR
+            required_fields:
+            - country
+            - qr_content
+        - fiat: BOB
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: BO
+            required_fields:
+            - country
+            - qr_content
+        - fiat: BRL
+          payment_instruments:
+          - pix
+          - qr
+          recipient_requirements:
+          - payment_instrument: pix
+            country: BR
+            required_fields:
+            - country
+            - pix_key
+            - holder_name
+          - payment_instrument: qr
+            country: BR
+            required_fields:
+            - country
+            - qr_content
+        - fiat: COP
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: CO
+            required_fields:
+            - country
+            - qr_content
+        - fiat: IDR
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: ID
+            required_fields:
+            - country
+            - qr_content
+        - fiat: KES
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: KE
+            required_fields:
+            - country
+            - qr_content
+        - fiat: KRW
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: KR
+            required_fields:
+            - country
+            - qr_content
+        - fiat: MYR
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: MY
+            required_fields:
+            - country
+            - qr_content
+        - fiat: PEN
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: PE
+            required_fields:
+            - country
+            - qr_content
+        - fiat: PHP
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: PH
+            required_fields:
+            - country
+            - qr_content
+        - fiat: TZS
+          payment_instruments:
+          - qr
+          recipient_requirements:
+          - payment_instrument: qr
+            country: TZ
+            required_fields:
+            - country
+            - qr_content
+        - fiat: USD
+          payment_instruments:
+          - ach
+          - paypal
+          - venmo
+          recipient_requirements:
+          - payment_instrument: ach
+            country: US
+            required_fields:
+            - country
+            - bank_name
+            - bank_code
+            - account_number
+            - account_type
+            - holder_name
+            - street1
+            - city
+            - region
+            - postal_code
+          - payment_instrument: paypal
+            country: US
+            required_fields:
+            - country
+            - paypal_email
+            - holder_name
+          - payment_instrument: venmo
+            country: US
+            required_fields:
+            - country
+            - venmo_phone
+        amount_modes:
+          exact_source: source.amount is fixed; destination amount is quoted.
+          exact_destination: destination.amount is fixed; required source amount is quoted.
+        wallet_policy:
+          daily_limit:
+            currency: USD
+            amount: '500'
+            window: UTC day
+            scope: payer wallet
+            enforcement: cumulative settled x402 amount
+  /api/public/x402/payments:
+    get:
+      operationId: listPublicX402Payouts
+      summary: List payouts funded by the authenticated wallet
+      description: 'Returns lightweight history for the payer wallet. This is a standard SIGN-IN-WITH-X (SIWX) route: call once without the header for a 402 SIWX challenge, then retry with its signed wallet proof.'
+      tags:
+      - Payouts
+      security:
+      - siwx: []
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 25
+      responses:
+        '200':
+          description: Payer-scoped payout history.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - payer_address
+                - payments
+                properties:
+                  payer_address:
+                    type: string
+                  payments:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - flow_id
+                      - payment_id
+                      - state
+                      - terminal
+                      - amount_mode
+                      - source
+                      - destination
+                      - created_at
+                      - updated_at
+                      properties:
+                        flow_id:
+                          type: string
+                        payment_id:
+                          type:
+                          - string
+                          - 'null'
+                        state:
+                          type: string
+                        terminal:
+                          type: boolean
+                        amount_mode:
+                          type: string
+                          enum:
+                          - exact_source
+                          - exact_destination
+                        source:
+                          type: object
+                        destination:
+                          type: object
+                        created_at:
+                          type: integer
+                        updated_at:
+                          type: integer
+        '402':
+          description: SIGN-IN-WITH-X proof is required or invalid. PAYMENT-REQUIRED carries a fresh SIWX challenge.
+  /api/public/x402/payments/{flowId}:
+    get:
+      operationId: getPublicX402Payout
+      summary: Get one payer-owned payout
+      description: Returns the latest payment state and outcome only when a signed SIWX proof belongs to the payer wallet that funded this flow.
+      tags:
+      - Payouts
+      security:
+      - siwx: []
+      parameters:
+      - name: flowId
+        in: path
+        required: true
+        schema:
+          type: string
+          example: pxf_0123456789abcdef
+      responses:
+        '200':
+          description: Payout state and payment outcome.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - flow_id
+                - payment_id
+                - state
+                - terminal
+                properties:
+                  flow_id:
+                    type: string
+                  payment_id:
+                    type:
+                    - string
+                    - 'null'
+                  state:
+                    type: string
+                  terminal:
+                    type: boolean
+                  payment_instruction:
+                    type:
+                    - object
+                    - 'null'
+                  failure:
+                    type:
+                    - object
+                    - 'null'
+                additionalProperties: true
+        '402':
+          description: SIGN-IN-WITH-X proof is required or invalid. PAYMENT-REQUIRED carries a fresh SIWX challenge.
+        '404':
+          description: Flow does not exist or is not owned by this payer
+components:
+  schemas:
+    PublicX402BazaarDiscovery:
+      type: object
+      required:
+      - state
+      - discovery
+      - message
+      properties:
+        state:
+          type: string
+          const: payment_required
+        discovery:
+          type: boolean
+          const: true
+        message:
+          type: string
+    PublicX402PaymentRequired:
+      type: object
+      required:
+      - flow_id
+      - payment_id
+      - state
+      - payment_instruction
+      properties:
+        flow_id:
+          type: string
+        payment_id:
+          type: string
+        state:
+          type: string
+          const: payment_required
+        payment_instruction:
+          type: object
+          description: Server-generated crypto deposit instruction.
+    PublicX402ExactSourceStart:
+      type: object
+      required:
+      - action
+      - amount_mode
+      - source
+      - destination
+      properties:
+        action:
+          type: string
+          const: start
+          default: start
+        flow_id:
+          type: string
+          description: Returned by the 402 and required on the signed retry.
+        amount_mode:
+          type: string
+          const: exact_source
+          default: exact_source
+        source:
+          type: object
+          required:
+          - asset
+          - amount
+          default:
+            asset:
+              type: crypto
+              ticker: USDC
+              chain: base
+            amount: '0.08'
+          properties:
+            asset:
+              type: object
+              required:
+              - type
+              - ticker
+              - chain
+              default:
+                type: crypto
+                ticker: USDC
+                chain: base
+              properties:
+                type:
+                  type: string
+                  const: crypto
+                  default: crypto
+                ticker:
+                  type: string
+                  const: USDC
+                  default: USDC
+                chain:
+                  type: string
+                  const: base
+                  default: base
+            amount:
+              type: string
+              pattern: ^[0-9]+(?:\.[0-9]+)?$
+              default: '0.08'
+              description: Required when amount_mode is exact_source.
+        destination:
+          type: object
+          required:
+          - asset
+          - country
+          - recipient
+          default:
+            asset:
+              type: fiat
+              symbol: IDR
+            country: ID
+            recipient:
+              payment_instrument: qr
+              qr_content: 00020101021126610014COM.GO-JEK.WWW01189360091435523135470210G5523135470303UMI51440014ID.CO.QRIS.WWW0215ID10243572625090303UMI5204794153033605802ID5925RONIN STRENGTH GYM, PGDAN6009TANGERANG61051533962070703A036304FB88
+              qr_dynamic: false
+          properties:
+            asset:
+              type: object
+              required:
+              - type
+              - symbol
+              default:
+                type: fiat
+                symbol: IDR
+              properties:
+                type:
+                  type: string
+                  const: fiat
+                  default: fiat
+                symbol:
+                  type: string
+                  const: IDR
+                  default: IDR
+            country:
+              type: string
+              const: ID
+              default: ID
+            amount:
+              type: string
+              pattern: ^[0-9]+(?:\.[0-9]+)?$
+              description: Required when amount_mode is exact_destination.
+            recipient:
+              type: object
+              required:
+              - payment_instrument
+              - qr_content
+              default:
+                payment_instrument: qr
+                qr_content: 00020101021126610014COM.GO-JEK.WWW01189360091435523135470210G5523135470303UMI51440014ID.CO.QRIS.WWW0215ID10243572625090303UMI5204794153033605802ID5925RONIN STRENGTH GYM, PGDAN6009TANGERANG61051533962070703A036304FB88
+                qr_dynamic: false
+              properties:
+                payment_instrument:
+                  type: string
+                  const: qr
+                  default: qr
+                qr_content:
+                  type: string
+                qr_dynamic:
+                  type: boolean
+                  default: false
+    PublicX402FundingSubmitted:
+      type: object
+      required:
+      - flow_id
+      - payment_id
+      - state
+      - terminal
+      properties:
+        flow_id:
+          type: string
+        payment_id:
+          type: string
+        state:
+          type: string
+          const: funding_submitted
+        terminal:
+          type: boolean
+          const: false
+  securitySchemes:
+    siwx:
+      type: apiKey
+      in: header
+      name: SIGN-IN-WITH-X
+      description: Base64-encoded CAIP-122 wallet proof. Make an unsigned request first to receive a fresh SIWX challenge in PAYMENT-REQUIRED, then sign and retry.

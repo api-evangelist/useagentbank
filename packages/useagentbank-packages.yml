@@ -1,0 +1,10 @@
+generated: '2026-10-20'
+method: searched
+source: https://registry.npmjs.org/agent-bank-mcp
+packages:
+  - name: agent-bank-mcp
+    registry: npm
+    official: true
+    version: 0.1.42
+    published: 2024-09-15
+    note: "Latest version from npm registry"
