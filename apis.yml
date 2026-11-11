@@ -103,7 +103,6 @@ x-submission-notes: 'api-search/inbox#48. Crypto banking/payouts for AI agents. 
   llms.txt (site + docs, llms-full); remote MCP https://mcp.useagentbank.com (OAuth 2.1 PKCE, DCR; RFC 9728 metadata); MCP Registry com.useagentbank/agentbank;
   MIT client github.com/theagentbank/agent-bank-mcp (npm agent-bank-mcp). Kin approved 2026-10-19 (case-by-case: crypto rails).'
 x-submission-probe: artifacts listed in issue
-x-submitted-by: github:trunghuynh-humanfx (github api-search/inbox#48, 2026-10-19)
 x-coverage:
   state: unreadable
   reason: no-machine-readable-spec
